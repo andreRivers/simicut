@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Administrasi UMSU</title>
+    <title>SIMICUT UMSU</title>
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/loginNew/'); ?>css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
@@ -18,12 +18,12 @@
     <img class="wave" src="<?= base_url('assets/loginNew/'); ?>img/wave.png">
     <div class="container">
         <div class="img">
-            <img src="<?= base_url('assets/loginNew/'); ?>img/bg.svg">
+            <img src="<?= base_url('assets/loginNew/'); ?>img/bg.png">
         </div>
         <div class="login-content">
             <form method="post" action="<?= base_url('auth'); ?>">
                 <img src="<?= base_url('assets/loginNew/'); ?>img/avatar.png">
-                <h2 class="title">ADMINISTRASI</h2>
+                <h2 class="title">IZIN CUTI UMSU</h2>
                 <div class="input-div one">
                     <div class="i">
                         <i class="fas fa-user"></i>
@@ -42,7 +42,7 @@
                         <input type="password" class="input" id="password" name="password" required>
                     </div>
                 </div>
-                <a href="<?= base_url('cek'); ?>">Scan Barcode?</a>
+                <a href="<?= base_url('auth/forgotPassword'); ?>">Lupa Password?</a>
                 <input type="submit" class="btn" value="Login">
             </form>
         </div>
