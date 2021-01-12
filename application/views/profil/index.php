@@ -1,6 +1,6 @@
     <!-- Main content -->
     <section class="content">
-
+		<?= $this->session->flashdata('message'); ?>
       <div class="row">
         <div class="col-md-3">
 
@@ -68,12 +68,12 @@
     </tr>
     <tr>
       <td>Jenis Kelamin</td>
-      <td><?= $userDetail['jenis_kelamin']; ?></td>
+      <td><?= $userDetail['jenisKelamin']; ?></td>
 	</tr>
 	
 	<tr>
       <td>No. Hp</td>
-      <td><?= $userDetail['no_hp']; ?></td>
+      <td><?= $userDetail['noHp']; ?></td>
 	</tr>
 		
 	<tr>
@@ -110,12 +110,12 @@
         
         <!-- Modal body -->
         <div class="modal-body">
-		<form action="<?= base_url('profil/upload'); ?>" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-      <label for="email">Upload Foto:</label>
-      <input type="file" class="form-control" id="upload" placeholder="Upload Photo" name="upload" accept="image/gif, image/jpeg, image/png" required>
+	    	<form action="<?= base_url('profil/upload'); ?>" method="post" enctype="multipart/form-data">
+       <div class="form-group">
+        <label for="email">Upload Foto:</label>
+       <input type="file" class="form-control" id="image" placeholder="Upload Photo" name="image" accept="image/gif, image/jpeg, image/png" required>
    
-	</div>
+     	</div>
 	
 	<!-- Modal footer -->
 	<div class="modal-footer">

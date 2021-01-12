@@ -2,7 +2,7 @@
     <nav class="navbar navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="../../index2.html" class="navbar-brand"><b>SIMICUT</b> UMSU</a>
+          <a href="<?= base_url('user'); ?>" class="navbar-brand"><b>SIMICUT</b> UMSU</a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <i class="fa fa-bars"></i>
           </button>
@@ -16,15 +16,17 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Permohonan <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Permohonan Cuti</a></li>
-                <li><a href="#">Permohonan Izin Keluar</a></li>
+                <li><a href="<?= base_url('permohonan'); ?>">Permohonan Cuti</a></li>
+								<li><a href="#">Permohonan Izin Keluar</a></li>
+								<li><a href="<?= base_url('permohonan/listCuti'); ?>">List Permohonan Cuti</a></li>
+						
                
               </ul>
 			</li>
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> Pengaturan <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Ubah Password</a></li>
+                <li><a href="<?= base_url('profil/ubahPassword'); ?>">Ubah Password</a></li>
 				<li><a href="#">Laporan cutiku</a></li>
 				<li><a href="#">Laporan Izin Keluarku</a></li>
                
@@ -113,5 +115,6 @@
           <li><a href="#">pages</a></li>
           <li class="active"><?= $title; ?></li>
         </ol>
-      </section>
+			</section>
+		
 

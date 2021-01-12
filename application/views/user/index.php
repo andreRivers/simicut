@@ -1,4 +1,14 @@
-    <!-- Main content -->
+	<?php 
+	$email = $this->session->userdata('email');
+	if ($user['role_id'] == '2') {
+		$cutiUmum = $this->db->query("SELECT * FROM user_detail where email='$email'")->row_array();
+		$permohonan = $this->db->query("SELECT * FROM permohonan where email='$email'");
+	}
+	
+	?>		
+		<?php
+				if ($user['role_id'] == '2') { ?>
+		<!-- Main content -->
     <section class="content">
       <!-- Small boxes (Stat box) -->
       <div class="row">
@@ -6,7 +16,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
+              <h3><?= $cutiUmum['cutiUmum']; ?></h3>
 
               <p>Cuti Umumku</p>
             </div>
@@ -21,7 +31,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3><?= $cutiUmum['cutiUmroh']; ?><sup style="font-size: 20px"></sup></h3>
 
               <p>Cuti Umroh</p>
             </div>
@@ -36,7 +46,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>44</h3>
+              <h3><?= $cutiUmum['cutiHamil']; ?></h3>
 
               <p>Cuti Hamil</p>
             </div>
@@ -51,7 +61,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>65</h3>
+              <h3><?= $permohonan->num_rows(); ?></h3>
 
               <p>Permohonan Cuti</p>
             </div>
@@ -63,4 +73,30 @@
         </div>
         <!-- ./col -->
 	  </div>
-	</section>
+
+
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h2 class="box-title">Informasi</h2>
+					<div class="box-tools pull-right">
+						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+						<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+					</div>
+				</div>
+				<!-- /.box-header -->
+				<div class="box-body">
+				<ul>
+<li>Harap Melengkapi Profil Sebelum Membuat Permohonan</li>
+<li>Harap Melengkapi dan upload file izin cuti pimpinan</li>
+<li>Setiap Permohonan cuti Maksimal 6 Hari</li>
+</ul>
+<p>&nbsp;</p>
+				</div>
+				<!-- /.row -->
+
+			</div>
+			<!-- /.box-body -->
+
+		</section>
+
+<?php } ?>

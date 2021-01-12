@@ -27,7 +27,7 @@
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Gelar Depan</label>
                   <div class="col-sm-3">
-					<input type="text" class="form-control" id="gelarDepan" name="gelarDepan" placeholder="Gelar Depan">
+					<input type="text" class="form-control" id="gelarDepan" name="gelarDepan" placeholder="Gelar Depan" value="<?= $userDetail['gelarDepan']; ?>">
 					<?= form_error('gelarDepan', '<small class="text-danger">', '</small>'); ?>
                   </div>
 				</div>
@@ -36,7 +36,7 @@
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Gelar Belakang</label>
                   <div class="col-sm-3">
-					<input type="text" class="form-control" id="gelarBelakang" name="gelarBelakang" placeholder="Gelar Belakang">
+					<input type="text" class="form-control" id="gelarBelakang" name="gelarBelakang" placeholder="Gelar Belakang" value="<?= $userDetail['gelarBelakang']; ?>">
 					<?= form_error('gelarBelakang', '<small class="text-danger">', '</small>'); ?>
                   </div>
 				</div>
@@ -44,7 +44,7 @@
 				<div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">NIK</label>
                   <div class="col-sm-10">
-					<input type="text" class="form-control" id="nik" name="nik" placeholder="Nomor Induk Kependudukan">
+					<input type="text" class="form-control" id="nik" name="nik" placeholder="Nomor Induk Kependudukan" value="<?= $userDetail['nik']; ?>">
 					<?= form_error('nik', '<small class="text-danger">', '</small>'); ?>
                   </div>
 				</div>
@@ -53,7 +53,7 @@
 				<div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">NBP</label>
                   <div class="col-sm-10">
-					<input type="text" class="form-control" id="nbp" name="nbp" placeholder="Nomor Baku Pegawai">
+					<input type="text" class="form-control" id="nbp" name="nbp" placeholder="Nomor Baku Pegawai" value="<?= $userDetail['nbp']; ?>">
 					<?= form_error('nbp', '<small class="text-danger">', '</small>'); ?>
                   </div>
 				</div>
@@ -88,7 +88,7 @@
 				<div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Tempat Lahir</label>
                   <div class="col-sm-10">
-					<input type="text" class="form-control" id="tempatLahir" name="tempatLahir" placeholder="Tempat Lahir">
+					<input type="text" class="form-control" id="tempatLahir" name="tempatLahir" placeholder="Tempat Lahir" value="<?= $userDetail['tempatLahir']; ?>">
 					<?= form_error('tempatLahir', '<small class="text-danger">', '</small>'); ?>
                   </div>
 				</div>
@@ -97,7 +97,7 @@
 				<div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Tanggal Lahir</label>
                   <div class="col-sm-3">
-					<input type="date" class="form-control" id="tglLahir" name="tglLahir" placeholder="Tempat Lahir">
+					<input type="date" class="form-control" id="tglLahir" name="tglLahir" placeholder="Tanggal Lahir">
 					<?= form_error('tglLahir', '<small class="text-danger">', '</small>'); ?>
                   </div>
 				</div>
@@ -106,8 +106,8 @@
 				<div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">No. Handphone</label>
                   <div class="col-sm-3">
-					<input type="text" class="form-control" id="tempatLahir" name="tempatLahir" placeholder="No. Handphone">
-					<?= form_error('tempatLahir', '<small class="text-danger">', '</small>'); ?>
+					<input type="text" class="form-control" id="noHp" name="noHp" placeholder="No. Handphone" value="<?= $userDetail['noHp']; ?>">
+					<?= form_error('noHp', '<small class="text-danger">', '</small>'); ?>
                   </div>
 				</div>
 
@@ -147,15 +147,22 @@
 				<div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Unit Kerja</label>
                   <div class="col-sm-10">
-				  <select class="form-control" id="unitKerja" name="unitKerja">
+									<select class="form-control select2" style="width: 100%;" id="unitKerja" name="unitKerja">
                     <option selected disabled value="">Silahkan Pilih</option>
-                    <?php
-                            foreach ($unit as $data) { // Lakukan looping pada variabel siswa dari controller
-                                echo "<option value='" . $data->unitKerja . "'>" . $data->unitKerja . "</option>";
-                            }
-                            ?>
-                  </select>
-					<?= form_error('unitKerja', '<small class="text-danger">', '</small>'); ?>
+									  <?php foreach ($unit as $ja) : ?>
+                                <option value="<?= $ja['unitKerja']; ?>"><?= $ja['unitKerja']; ?></option>
+                            <?php endforeach; ?>
+									</select>
+							
+									<?= form_error('unitKerja', '<small class="text-danger">', '</small>'); ?>
+                  </div>
+				</div>
+
+				<div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Alamat Rumah</label>
+                  <div class="col-sm-10">
+					<input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat Rumah" value="<?= $userDetail['alamat']; ?>">
+					<?= form_error('alamat', '<small class="text-danger">', '</small>'); ?>
                   </div>
 				</div>
                
