@@ -174,14 +174,16 @@ class Profil extends CI_Controller
 	
 	public function viewUser($email)
     {
-        $data['title'] = 'Lihat Profile';
-		$data['user'] = $this->db->get_where('user', ['email' => $email])->row_array();
-		$data['userDetail'] = $this->db->get_where('user_detail', ['email' =>  $email])->row_array();
+		$data['title'] = 'Lihat Profile';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['userDetail'] = $this->db->get_where('user_detail', ['email' => $this->session->userdata('email')])->row_array();
+		$data['x'] = $this->db->get_where('user', ['email' => $email])->row_array();
+		$data['y'] = $this->db->get_where('user_detail', ['email' =>  $email])->row_array();
 
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('profil/index', $data);
+        $this->load->view('profil/viewProfil', $data);
         $this->load->view('templates/footer');
     }
 

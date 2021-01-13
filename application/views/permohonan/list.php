@@ -27,22 +27,22 @@
 				  <td> <a href="<?= base_url('profil/viewUser/'); ?><?= $prm['email']; ?>"> <?= $prm['nama']; ?> </a> - <?= $prm['unitKerja']; ?><br>
 				  <b>Lamanya Cuti : <?= $prm['cutiDiambil']; ?> Hari | Tanggal Mulai Cuti : <?= date("d F Y", strtotime($prm['tglCuti'])); ?> 
 				  <br>Tanggal Selesai Cuti :<?= date("d F Y", strtotime($prm['tglSelesaiCuti'])); ?> | Tanggal Masuk Kerja :<?= date("d F Y", strtotime($prm['tglMasuk'])); ?> </b>
-				  <br><small> Alasan :  <?= $prm['alasan']; ?> 
+				  <br><small> Alasan :  <?= $prm['alasan']; ?> 	</small>
 				  <br> Status :
 				  <?php
                     if ( $prm['sts'] == 1) {
-                        echo '<span class="badge badge-pill badge-info">Permohonan Terkirim</span>';
+                        echo '<span class="label label-primary">Permohonan Terkirim</span>';
                     } elseif ( $prm['sts'] == 2) {
-                        echo '<span class="badge badge-pill badge-warning">Permohonan Sedang Diproses</span>';
+                        echo '<span class="label label-info">Permohonan Sedang Diproses</span>';
                     } elseif ( $prm['sts'] == 3) {
-                        echo '<span class="badge badge-pill badge-success">Permohonan Disetujui</span>';
+                        echo '<span class="label label-success">Permohonan Disetujui</span>';
                     } elseif ( $prm['sts'] == 4) {
-						echo '<span class="badge badge-pill badge-danger">Permohonan Ditolak</span>';
+						echo '<span class="label label-warning">Permohonan Ditolak</span>';
 					} elseif ( $prm['sts'] == 5) {
-                        echo '<span class="badge badge-pill badge-danger">Membatalkan Permohonan</span>';
+                        echo '<span class="label label-danger">Membatalkan Permohonan</span>';
                     }
 									?>  
-									</small>
+								
 
                   </td>
                   <td> <?= date("d F Y", strtotime($prm['tglPengajuan'])); ?></td>
@@ -58,8 +58,8 @@
                             if ($user['role_id'] == '1') { ?>
                             <?php
                             if ($prm['sts'] =='1') { ?>
-							 <li><a href="<?= base_url('permohonan/proses/');?><?= $prm['id_cuti']; ?>" >Proses</a></li>
-							 <li><a href="<?= base_url('permohonan/tolak/');?><?= $prm['id_cuti']; ?>" >Tolak</a></li>
+							 <li><a href="<?= base_url('validator/permohonan/proses/');?><?= $prm['id_cuti']; ?>" >Proses</a></li>
+							 <li><a href="<?= base_url('validator/permohonan/tolak/');?><?= $prm['id_cuti']; ?>" >Tolak</a></li>
 							<?php } ?>
 							
 							<?php } ?>
@@ -79,8 +79,8 @@
                             if ($user['role_id'] == '3') { ?>
                             <?php
                             if ($prm['sts'] =='2') { ?>
-							 <li><a href="<?= base_url('permohonan/setujui/');?><?= $prm['id_cuti']; ?>" >Setujui</a></li>
-							 <li><a href="<?= base_url('permohonan/tolak/');?><?= $prm['id_cuti']; ?>" >Tolak</a></li>
+							 <li><a href="<?= base_url('pimpinan/permohonan/setujui/');?><?= $prm['id_cuti']; ?>" >Setujui</a></li>
+							 <li><a href="<?= base_url('pimpinan/permohonan/tolak/');?><?= $prm['id_cuti']; ?>" >Tolak</a></li>
 							<?php } ?>
 							
                             <?php } ?>

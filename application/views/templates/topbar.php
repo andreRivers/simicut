@@ -16,9 +16,12 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Permohonan <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
+							<?php if ($user['role_id'] == '2') { ?>
                 <li><a href="<?= base_url('permohonan'); ?>">Permohonan Cuti</a></li>
 								<li><a href="#">Permohonan Izin Keluar</a></li>
+								<?php } ?>
 								<li><a href="<?= base_url('permohonan/listCuti'); ?>">List Permohonan Cuti</a></li>
+								<li><a href="<?= base_url('permohonan/listKeluar'); ?>">List Permohonan Keluar</a></li>
 						
                
               </ul>
