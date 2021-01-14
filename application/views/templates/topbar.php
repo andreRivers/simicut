@@ -29,9 +29,21 @@
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> Pengaturan <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="<?= base_url('profil/ubahPassword'); ?>">Ubah Password</a></li>
+								<li><a href="<?= base_url('profil/ubahPassword'); ?>">Ubah Password</a></li>
+								<?php if ($user['role_id'] == '2') { ?>
 				<li><a href="#">Laporan cutiku</a></li>
 				<li><a href="#">Laporan Izin Keluarku</a></li>
+				<?php } ?>
+
+				<?php if ($user['role_id'] == '1') { ?>
+				<li><a href="<?= base_url('laporan/cuti'); ?>">Laporan Izin cuti</a></li>
+				<li><a href="<?= base_url('laporan/keluar'); ?>">Laporan Izin Keluar</a></li>
+				<?php } ?>
+
+				<?php if ($user['role_id'] == '3') { ?>
+				<li><a href="<?= base_url('laporan/cuti'); ?>">Laporan Izin cuti</a></li>
+				<li><a href="<?= base_url('laporan/keluar'); ?>">Laporan Izin Keluar</a></li>
+				<?php } ?>
                
               </ul>
             </li>

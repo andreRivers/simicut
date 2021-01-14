@@ -443,6 +443,16 @@ class Permohonan extends CI_Controller
 			}
 			}
 
+			public function cetak($id_cuti)
+			{
+				$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+				$data['detail'] = $this->db->get_where('user_detail', ['email' => $this->session->userdata('email')])->row_array();
+				$data['cetak'] = $this->Permohonan_Model->listCutiCetak($id_cuti);
+
+				$this->load->view('cetak/cetak',$data);
+		
+			}
+
 	
 }
    

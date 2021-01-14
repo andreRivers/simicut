@@ -71,6 +71,10 @@
 							 <li><a href="<?= base_url('permohonan/ubahCuti/');?><?= $prm['id_cuti']; ?>" >Ubah</a></li>
 							 <li><a href="<?= base_url('permohonan/batal/');?><?= $prm['id_cuti']; ?>" >Batal</a></li>
 							<?php } ?>
+							<?php
+							if ($prm['sts'] =='3') { ?>
+							 <li><a href="<?= base_url('permohonan/cetak/');?><?= $prm['id_cuti']; ?>" target="_link" >Cetak</a></li>
+							<?php } ?>
 							
 							<?php } ?>
 							

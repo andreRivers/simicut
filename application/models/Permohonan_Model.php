@@ -25,6 +25,16 @@ class Permohonan_Model extends CI_Model
 		LEFT JOIN user_detail ON user_detail.email=permohonan.email where permohonan.sts=2");
 	return $hasil->result_array();
 	   }
+	}
+	
+	
+    function listCutiCetak($id_cuti)
+    {
+
+			$hasil = $this->db->query("SELECT * FROM permohonan 
+			LEFT JOIN user ON user.email = permohonan.email 
+			LEFT JOIN user_detail ON user_detail.email=permohonan.email where permohonan.id_cuti='$id_cuti'");
+			return $hasil->row_array();
     }
 
 	function batalCuti($id_cuti)
@@ -69,4 +79,14 @@ class Permohonan_Model extends CI_Model
 	
     }
    
+
+	function laporanCutiCetak($dateAwal, $dateSelesai, $jenisCuti)
+    {
+
+		$hasil = $this->db->query("SELECT * FROM permohonan 
+		LEFT JOIN user ON user.email = permohonan.email 
+		LEFT JOIN user_detail ON user_detail.email=permohonan.email where permohonan.sts=3 AND permohonan.jenisCuti='$jenisCuti' AND permohonan.tglCuti BETWEEN '$dateAwal' AND '$dateSelesai' ");
+		return $hasil->result_array();
+	
+    }
 }
