@@ -26,6 +26,40 @@ class Permohonan_Model extends CI_Model
 	return $hasil->result_array();
 	   }
 	}
+
+	function cutiku()
+    {
+	
+		$email=$this->session->userdata('email');
+		$hasil = $this->db->query("SELECT * FROM permohonan 
+		LEFT JOIN user ON user.email = permohonan.email 
+		LEFT JOIN user_detail ON user_detail.email=permohonan.email where permohonan.email='$email' ");
+		return $hasil->result_array();
+	   
+	}
+
+	function listCutiAll()
+    {
+	
+	
+		$hasil = $this->db->query("SELECT * FROM permohonan 
+		LEFT JOIN user ON user.email = permohonan.email 
+		LEFT JOIN user_detail ON user_detail.email=permohonan.email ");
+		return $hasil->result_array();
+	   
+	}
+
+
+	
+    function cutiHariIni()
+    {
+		$date = date("Y-m-d");
+		$hasil = $this->db->query("SELECT * FROM permohonan 
+		LEFT JOIN user ON user.email = permohonan.email 
+		LEFT JOIN user_detail ON user_detail.email=permohonan.email where permohonan.sts=3 AND permohonan.tglCuti='$date'");
+		return $hasil->result_array();
+	   
+	}
 	
 	
     function listCutiCetak($id_cuti)

@@ -2,7 +2,8 @@
 <html>
 
 <head>
-    <title>SIMICUT UMSU</title>
+	<title>SIMICUT UMSU</title>
+	<link rel="shortcut icon" type="image/icon" href="<?= base_url('assets/'); ?>img/icon.png">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/loginNew/'); ?>css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>

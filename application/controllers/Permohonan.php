@@ -110,6 +110,19 @@ class Permohonan extends CI_Controller
         $this->load->view('templates/footer');
 	}
 
+	public function viewAll()
+    {
+        $data['title'] = 'List Cuti';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['permohonan'] = $this->Permohonan_Model->listCutiAll();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('permohonan/list', $data);
+        $this->load->view('templates/footer');
+	}
+
+
 	public function ubahCuti($id_cuti)
     {
         $data['title'] = 'Ubah Permohononan Form Cuti';

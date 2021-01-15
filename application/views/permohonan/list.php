@@ -42,6 +42,8 @@
                         echo '<span class="label label-danger">Membatalkan Permohonan</span>';
                     }
 									?>  
+					<br>
+					<a href="<?= base_url('assets/scan/'); ?><?=  $prm['scan'];  ?>" target="_blank"><span class="label label-danger">*Lampiran</span></a>
 								
 
                   </td>
@@ -52,7 +54,7 @@
                        <i class="fa fa-cog"></i> <span class="caret"></span>
                         </button>
 						<ul class="dropdown-menu">
-                         <li><a href="<?= base_url('profil/viewUser/');?><?= $prm['email']; ?>" >Lihat Profil</a></li>
+                         <li><a href="<?= base_url('profil/viewUser/');?><?= $prm['email']; ?>">Lihat Profil</a></li>
 							
 							<?php
                             if ($user['role_id'] == '1') { ?>
@@ -97,9 +99,9 @@
                  
                 </tr>
                 
-				</tbody>
 				<?php $i++; ?>
 				<?php endforeach; ?>
+				</tbody>
               </table>
 				</div>
 				<!-- /.row -->

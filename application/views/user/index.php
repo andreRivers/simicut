@@ -95,7 +95,63 @@
 				<!-- /.row -->
 
 			</div>
-			<!-- /.box-body -->
+		
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h2 class="box-title">Permohonanku</h2>
+					<div class="box-tools pull-right">
+						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+						<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+					</div>
+				</div>
+				<!-- /.box-header -->
+				<div class="box-body">
+				<table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Permohonan Cuti</th>
+
+                </tr>
+                </thead>
+                <tbody>
+				<?php $i = 1; 
+			    foreach ($cutiku as $cutku) : ?>
+                <tr>
+								<td><?= $i; ?></td>
+				  <td> <a href="<?= base_url('profil/viewUser/'); ?><?= $cutku['email']; ?>"> <?= $cutku['nama']; ?> </a> - <?= $cutku['unitKerja']; ?><br>
+				  <b>Lamanya Cuti : <?= $cutku['cutiDiambil']; ?> Hari | Tanggal Mulai Cuti : <?= date("d F Y", strtotime($cutku['tglCuti'])); ?> 
+				  <br>Tanggal Selesai Cuti :<?= date("d F Y", strtotime($cutku['tglSelesaiCuti'])); ?> | Tanggal Masuk Kerja :<?= date("d F Y", strtotime($cutku['tglMasuk'])); ?> </b>
+				  <br><small> Alasan :  <?= $cutku['alasan']; ?> 	</small>
+				  <br> Status :
+				  <?php
+                    if ( $cutku['sts'] == 1) {
+                        echo '<span class="label label-primary">Permohonan Terkirim</span>';
+                    } elseif ( $cutku['sts'] == 2) {
+                        echo '<span class="label label-info">Permohonan Sedang Diproses</span>';
+                    } elseif ( $cutku['sts'] == 3) {
+                        echo '<span class="label label-success">Permohonan Disetujui</span>';
+                    } elseif ( $cutku['sts'] == 4) {
+						echo '<span class="label label-warning">Permohonan Ditolak</span>';
+					} elseif ( $cutku['sts'] == 5) {
+                        echo '<span class="label label-danger">Membatalkan Permohonan</span>';
+                    }
+									?>  
+					<br>
+					<a href="<?= base_url('assets/scan/'); ?><?=  $cutku['scan'];  ?>" target="_blank"><span class="label label-danger">*Lampiran</span></a>
+								
+
+                  </td>
+				</tr>
+                
+				<?php $i++; ?>
+				<?php endforeach; ?>
+				</tbody>
+              </table>
+				</div>
+				<!-- /.row -->
+
+			</div>
 
 		</section>
 
@@ -105,10 +161,12 @@
 <?php 
 	$email = $this->session->userdata('email');
 	if ($user['role_id'] == '1') {
-		$cutiUmum = $this->db->query("SELECT * FROM permohonan where jenisCuti='Cuti Umum' AND sts=3");
-		$cutiUmroh = $this->db->query("SELECT * FROM permohonan where jenisCuti='Cuti Umroh' AND sts=3");
-		$cutiHamil = $this->db->query("SELECT * FROM permohonan where jenisCuti='Cuti Hamil' AND sts=3");
-		$permohonan = $this->db->query("SELECT * FROM permohonan");
+		$date =date('Y'); 
+		$cutiUmum = $this->db->query("SELECT * FROM permohonan where jenisCuti='Cuti Umum' AND sts=3 AND tglCuti like '%$date%' ");
+		$cutiUmroh = $this->db->query("SELECT * FROM permohonan where jenisCuti='Cuti Umroh' AND sts=3 AND tglCuti like '%$date%' ");
+		$cutiHamil = $this->db->query("SELECT * FROM permohonan where jenisCuti='Cuti Hamil' AND sts=3 AND tglCuti like '%$date%' ");
+		$permohonan = $this->db->query("SELECT * FROM user");
+		
 		
 	}
 	
@@ -138,7 +196,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3><?= $cutiUmum->num_rows(); ?><sup style="font-size: 20px"></sup></h3>
+              <h3><?= $cutiUmroh->num_rows(); ?><sup style="font-size: 20px"></sup></h3>
 
               <p>Permohonan Cuti Umroh</p>
             </div>
@@ -153,7 +211,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3><?= $cutiUmum->num_rows(); ?></h3>
+              <h3><?= $cutiHamil->num_rows(); ?></h3>
 
               <p> Permohonan Cuti Hamil</p>
             </div>
@@ -170,7 +228,7 @@
             <div class="inner">
               <h3><?= $permohonan->num_rows(); ?></h3>
 
-              <p>Permohonan Cuti</p>
+              <p>Pengguna</p>
             </div>
             <div class="icon">
               <i class="ion ion-bookmark"></i>
@@ -178,31 +236,47 @@
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        <!-- ./col -->
-	  </div>
+				<!-- ./col -->
+				
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+          <div class="box box-primary">
+					<div class="box-header with-border">
+              <h3 class="box-title">Pegawai Sedang Cuti <span class="label label-danger">Hari Ini</span></h3>
+						</div>
+						<div class="box-body">
+						<table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Permohonan Cuti</th>
 
-
-			<div class="box box-primary">
-				<div class="box-header with-border">
-					<h2 class="box-title">Informasi</h2>
-					<div class="box-tools pull-right">
-						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-						<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </tr>
+                </thead>
+                <tbody>
+				<?php $i = 1; 
+			    foreach ($cutiHariIni as $cut) : ?>
+                <tr>
+                  <td><?= $i; ?></td>
+				  <td> <a href="<?= base_url('profil/viewUser/'); ?><?= $cut['email']; ?>"> <?= $cut['nama']; ?> </a> - <?= $cut['unitKerja']; ?><br>
+				  <b>Lamanya Cuti : <?= $cut['cutiDiambil']; ?> Hari | Tanggal Mulai Cuti : <?= date("d F Y", strtotime($cut['tglCuti'])); ?> 
+				  <br>Tanggal Selesai Cuti :<?= date("d F Y", strtotime($cut['tglSelesaiCuti'])); ?> | Tanggal Masuk Kerja :<?= date("d F Y", strtotime($cut['tglMasuk'])); ?> </b>
+				  <br><small> Alasan :  <?= $cut['alasan']; ?> 	</small>
+					</td>
+				</tr>
+                
+				<?php $i++; ?>
+				<?php endforeach; ?>
+				</tbody>
+              </table>
 					</div>
-				</div>
-				<!-- /.box-header -->
-				<div class="box-body">
-				<ul>
-<li>Harap Melengkapi Profil Sebelum Membuat Permohonan</li>
-<li>Harap Melengkapi dan upload file izin cuti pimpinan</li>
-<li>Setiap Permohonan cuti Maksimal 6 Hari</li>
-</ul>
-<p>&nbsp;</p>
-				</div>
-				<!-- /.row -->
+		</div>
 
 			</div>
-			<!-- /.box-body -->
+		</div>
+
 
 		</section>
 
@@ -214,10 +288,12 @@
 <?php 
 	$email = $this->session->userdata('email');
 	if ($user['role_id'] == '3') {
-		$cutiUmum = $this->db->query("SELECT * FROM permohonan where jenisCuti='Cuti Umum' AND sts=3");
-		$cutiUmroh = $this->db->query("SELECT * FROM permohonan where jenisCuti='Cuti Umroh' AND sts=3");
-		$cutiHamil = $this->db->query("SELECT * FROM permohonan where jenisCuti='Cuti Hamil' AND sts=3");
-		$permohonan = $this->db->query("SELECT * FROM permohonan");
+		$date =date('Y'); 
+		$cutiUmum = $this->db->query("SELECT * FROM permohonan where jenisCuti='Cuti Umum' AND sts=3 AND tglCuti like '%$date%' ");
+		$cutiUmroh = $this->db->query("SELECT * FROM permohonan where jenisCuti='Cuti Umroh' AND sts=3 AND tglCuti like '%$date%' ");
+		$cutiHamil = $this->db->query("SELECT * FROM permohonan where jenisCuti='Cuti Hamil' AND sts=3 AND tglCuti like '%$date%' ");
+		$permohonan = $this->db->query("SELECT * FROM user");
+		
 		
 	}
 	
@@ -247,7 +323,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3><?= $cutiUmum->num_rows(); ?><sup style="font-size: 20px"></sup></h3>
+              <h3><?= $cutiUmroh->num_rows(); ?><sup style="font-size: 20px"></sup></h3>
 
               <p>Permohonan Cuti Umroh</p>
             </div>
@@ -262,7 +338,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3><?= $cutiUmum->num_rows(); ?></h3>
+              <h3><?= $cutiHamil->num_rows(); ?></h3>
 
               <p> Permohonan Cuti Hamil</p>
             </div>
@@ -279,7 +355,7 @@
             <div class="inner">
               <h3><?= $permohonan->num_rows(); ?></h3>
 
-              <p>Permohonan Cuti</p>
+              <p>Pengguna</p>
             </div>
             <div class="icon">
               <i class="ion ion-bookmark"></i>
@@ -287,31 +363,47 @@
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        <!-- ./col -->
-	  </div>
+				<!-- ./col -->
+				
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+          <div class="box box-primary">
+					<div class="box-header with-border">
+              <h3 class="box-title">Pegawai Sedang Cuti <span class="label label-danger">Hari Ini</span></h3>
+						</div>
+						<div class="box-body">
+						<table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Permohonan Cuti</th>
 
-
-			<div class="box box-primary">
-				<div class="box-header with-border">
-					<h2 class="box-title">Informasi</h2>
-					<div class="box-tools pull-right">
-						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-						<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </tr>
+                </thead>
+                <tbody>
+				<?php $i = 1; 
+			    foreach ($cutiHariIni as $cut) : ?>
+                <tr>
+                  <td><?= $i; ?></td>
+				  <td> <a href="<?= base_url('profil/viewUser/'); ?><?= $cut['email']; ?>"> <?= $cut['nama']; ?> </a> - <?= $cut['unitKerja']; ?><br>
+				  <b>Lamanya Cuti : <?= $cut['cutiDiambil']; ?> Hari | Tanggal Mulai Cuti : <?= date("d F Y", strtotime($cut['tglCuti'])); ?> 
+				  <br>Tanggal Selesai Cuti :<?= date("d F Y", strtotime($cut['tglSelesaiCuti'])); ?> | Tanggal Masuk Kerja :<?= date("d F Y", strtotime($cut['tglMasuk'])); ?> </b>
+				  <br><small> Alasan :  <?= $cut['alasan']; ?> 	</small>
+					</td>
+				</tr>
+                
+				<?php $i++; ?>
+				<?php endforeach; ?>
+				</tbody>
+              </table>
 					</div>
-				</div>
-				<!-- /.box-header -->
-				<div class="box-body">
-				<ul>
-<li>Harap Melengkapi Profil Sebelum Membuat Permohonan</li>
-<li>Harap Melengkapi dan upload file izin cuti pimpinan</li>
-<li>Setiap Permohonan cuti Maksimal 6 Hari</li>
-</ul>
-<p>&nbsp;</p>
-				</div>
-				<!-- /.row -->
+		</div>
 
 			</div>
-			<!-- /.box-body -->
+		</div>
+
 
 		</section>
 

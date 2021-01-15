@@ -1,3 +1,15 @@
+<?php 
+	$email = $this->session->userdata('email');
+	// ADMIN
+	if ($user['role_id'] == '1') {
+		$permohonan = $this->db->query("SELECT * FROM permohonan where sts=1");
+	}  elseif ($user['role_id'] == '3') {
+		$permohonan = $this->db->query("SELECT * FROM permohonan where sts=2");
+	
+	}
+	
+	?>
+
 <header class="main-header">
     <nav class="navbar navbar-static-top">
       <div class="container">
@@ -11,7 +23,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#"><i class="fa fa-home"></i> Beranda <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="<?= base_url('user'); ?>"><i class="fa fa-home"></i> Beranda <span class="sr-only">(current)</span></a></li>
             <li><a href="<?= base_url('profil'); ?>"><i class="fa fa-user"></i> Profil</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Permohonan <span class="caret"></span></a>
@@ -21,7 +33,9 @@
 								<li><a href="#">Permohonan Izin Keluar</a></li>
 								<?php } ?>
 								<li><a href="<?= base_url('permohonan/listCuti'); ?>">List Permohonan Cuti</a></li>
-								<li><a href="<?= base_url('permohonan/listKeluar'); ?>">List Permohonan Keluar</a></li>
+								<?php if ($user['role_id'] == '1') { ?>
+									<li><a href="<?= base_url('permohonan/viewAll'); ?>">Semua Permohonan Cuti</a></li>
+				<?php } ?>
 						
                
               </ul>
@@ -37,13 +51,11 @@
 
 				<?php if ($user['role_id'] == '1') { ?>
 				<li><a href="<?= base_url('laporan/cuti'); ?>">Laporan Izin cuti</a></li>
-				<li><a href="<?= base_url('laporan/keluar'); ?>">Laporan Izin Keluar</a></li>
 				<?php } ?>
 
 				<?php if ($user['role_id'] == '3') { ?>
 				<li><a href="<?= base_url('laporan/cuti'); ?>">Laporan Izin cuti</a></li>
-				<li><a href="<?= base_url('laporan/keluar'); ?>">Laporan Izin Keluar</a></li>
-				<?php } ?>
+				<?php } ?> 
                
               </ul>
             </li>
@@ -54,28 +66,26 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
+						<?php 	if ($user['role_id'] == '1') { ?>
             <!-- Notifications Menu -->
             <li class="dropdown notifications-menu">
               <!-- Menu toggle button -->
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <a href="<?= base_url('permohonan/listCuti'); ?>">
                 <i class="fa fa-bell-o"></i>
-                <span class="label label-warning">10</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header">You have 10 notifications</li>
-                <li>
-                  <!-- Inner Menu: contains the notifications -->
-                  <ul class="menu">
-                    <li><!-- start notification -->
-                      <a href="#">
-                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                      </a>
-                    </li>
-                    <!-- end notification -->
-                  </ul>
-                </li>
-                <li class="footer"><a href="#">View all</a></li>
-              </ul>
+                <span class="label label-warning"><?= $permohonan->num_rows(); ?></span>
+							</a>
+							<?php } ?>
+
+							<?php 	if ($user['role_id'] == '3') { ?>
+            <!-- Notifications Menu -->
+            <li class="dropdown notifications-menu">
+              <!-- Menu toggle button -->
+              <a href="<?= base_url('permohonan/listCuti'); ?>">
+                <i class="fa fa-bell-o"></i>
+                <span class="label label-warning"><?= $permohonan->num_rows(); ?></span>
+							</a>
+							<?php } ?>
+    
             </li>
            
             <!-- User Account Menu -->

@@ -83,7 +83,16 @@ Nomor: '.$cetak["id_cuti"].'/II.3/UMSU/D/2021</h4>
         <td style="text-align: left;"><b><u>Assoc. Prof. Dr. Akrim, M.Pd.</u></b><br><center>NIDN. 0122127902</center></td>
       </tr>
     </tbody>
-  </table>
+	</table>
+	<small>
+	<b><u>Tembusan: </u></b>
+	<br>
+	1. Ketua Penegak Disiplin UMSU;
+	<br>
+	2. Kepala Unit/Lembaga/Badan/Fakultas Masing-masing;
+	<br>
+	3. Pertingga
+</small>
 </body>
 </html>';
 $mpdf = new \Mpdf\Mpdf();
