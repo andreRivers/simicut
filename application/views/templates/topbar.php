@@ -50,6 +50,8 @@
 				<?php } ?>
 
 				<?php if ($user['role_id'] == '1') { ?>
+				<li><a href="<?= base_url('master/pengguna'); ?>">Manajemen Pengguna</a></li>
+				<li><a href="<?= base_url('master/unit'); ?>">Manajemen Unit Kerja</a></li>
 				<li><a href="<?= base_url('laporan/cuti'); ?>">Laporan Izin cuti</a></li>
 				<?php } ?>
 

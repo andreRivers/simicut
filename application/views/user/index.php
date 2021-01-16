@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-primary">
             <div class="inner">
               <h3><?= $cutiUmum['cutiUmum']; ?></h3>
 
@@ -29,7 +29,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-primary">
             <div class="inner">
               <h3><?= $cutiUmum['cutiUmroh']; ?><sup style="font-size: 20px"></sup></h3>
 
@@ -44,7 +44,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-primary">
             <div class="inner">
               <h3><?= $cutiUmum['cutiHamil']; ?></h3>
 
@@ -59,7 +59,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-primary">
             <div class="inner">
               <h3><?= $permohonan->num_rows(); ?></h3>
 
@@ -179,7 +179,7 @@
       <div class="row">
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-purple">
             <div class="inner">
               <h3><?= $cutiUmum->num_rows();?></h3>
 
@@ -194,7 +194,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-purple">
             <div class="inner">
               <h3><?= $cutiUmroh->num_rows(); ?><sup style="font-size: 20px"></sup></h3>
 
@@ -209,7 +209,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-purple">
             <div class="inner">
               <h3><?= $cutiHamil->num_rows(); ?></h3>
 
@@ -224,7 +224,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-purple">
             <div class="inner">
               <h3><?= $permohonan->num_rows(); ?></h3>
 
@@ -306,7 +306,7 @@
       <div class="row">
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-purple">
             <div class="inner">
               <h3><?= $cutiUmum->num_rows();?></h3>
 
@@ -321,7 +321,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-purple">
             <div class="inner">
               <h3><?= $cutiUmroh->num_rows(); ?><sup style="font-size: 20px"></sup></h3>
 
@@ -336,7 +336,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-purple">
             <div class="inner">
               <h3><?= $cutiHamil->num_rows(); ?></h3>
 
@@ -351,7 +351,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-purple">
             <div class="inner">
               <h3><?= $permohonan->num_rows(); ?></h3>
 
