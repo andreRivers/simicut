@@ -1,1 +1,1 @@
-simicut
+<h1>SIMICUT (SISTEM INFORMASI IZIN CUTI)</h1>
