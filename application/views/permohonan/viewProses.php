@@ -2,7 +2,7 @@
             <?= $this->session->flashdata('message'); ?>
 			<div class="box box-primary">
 				<div class="box-header with-border">
-					<h2 class="box-title">List Permohonan Cuti</h2>
+					<h2 class="box-title">List Permohonan Diproses</h2>
 					<div class="box-tools pull-right">
 						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 						<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
@@ -43,10 +43,6 @@
                     }
 									?>  
 					<br>
-					<?php
-                            if ($prm['sts'] =='4') { ?>
-					<p class="text-danger"> Pesaan Penolakan :  <?= $prm['pesan']; ?></p>
-					<?php } ?>
 					<a href="<?= base_url('assets/scan/'); ?><?=  $prm['scan'];  ?>" target="_blank"><span class="label label-danger">*Lampiran</span></a>
 								
 

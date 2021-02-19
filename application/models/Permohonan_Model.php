@@ -123,4 +123,45 @@ class Permohonan_Model extends CI_Model
 		return $hasil->result_array();
 	
     }
+
+
+	function listCutiMasuk()
+    {
+
+			$hasil = $this->db->query("SELECT * FROM permohonan 
+			LEFT JOIN user ON user.email = permohonan.email 
+			LEFT JOIN user_detail ON user_detail.email=permohonan.email where permohonan.sts=1");
+			return $hasil->result_array();
+
+	}
+
+	function listCutiProses()
+    {
+
+			$hasil = $this->db->query("SELECT * FROM permohonan 
+			LEFT JOIN user ON user.email = permohonan.email 
+			LEFT JOIN user_detail ON user_detail.email=permohonan.email where permohonan.sts=2");
+			return $hasil->result_array();
+
+	}
+
+	function listCutiDisetujui()
+    {
+
+			$hasil = $this->db->query("SELECT * FROM permohonan 
+			LEFT JOIN user ON user.email = permohonan.email 
+			LEFT JOIN user_detail ON user_detail.email=permohonan.email where permohonan.sts=3");
+			return $hasil->result_array();
+
+	}
+
+	function listCutiDitolak()
+    {
+
+			$hasil = $this->db->query("SELECT * FROM permohonan 
+			LEFT JOIN user ON user.email = permohonan.email 
+			LEFT JOIN user_detail ON user_detail.email=permohonan.email where permohonan.sts=4");
+			return $hasil->result_array();
+
+	}
 }

@@ -23,11 +23,10 @@ class Permohonan extends CI_Controller
         $this->load->view('templates/footer');
 	}
 
-	public function tolakGo($id_cuti)
+	public function tolakGo()
     {
         $data['title'] = 'Batal  Permohononan Form Cuti';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['batal'] = $this->Permohonan_Model->batalCuti($id_cuti);
 	
 			$jenisCuti = $this->input->post('jenisCuti');	
 

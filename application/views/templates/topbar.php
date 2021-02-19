@@ -31,10 +31,17 @@
 							<?php if ($user['role_id'] == '2') { ?>
                 <li><a href="<?= base_url('permohonan'); ?>">Permohonan Cuti</a></li>
 								<li><a href="#">Permohonan Izin Keluar</a></li>
-								<?php } ?>
 								<li><a href="<?= base_url('permohonan/listCuti'); ?>">List Permohonan Cuti</a></li>
+								<?php } ?>
+								<?php if ($user['role_id'] == '3') { ?>
+									<li><a href="<?= base_url('permohonan/listCuti'); ?>">List Permohonan Cuti</a></li>
+								<?php } ?>
 								<?php if ($user['role_id'] == '1') { ?>
-									<li><a href="<?= base_url('permohonan/viewAll'); ?>">Semua Permohonan Cuti</a></li>
+									<li><a href="<?= base_url('validator/permohonan/viewMasuk'); ?>">List Permohonan Masuk</a></li>
+									<li><a href="<?= base_url('validator/permohonan/viewProses'); ?>">List Permohonan Diproses</a></li>
+									<li><a href="<?= base_url('validator/permohonan/viewDisetujui'); ?>">List Permohonan Disetujui</a></li>
+									<li><a href="<?= base_url('validator/permohonan/viewDiTolak'); ?>">Permohonan Ditolak</a></li>
+									<li><a href="<?= base_url('validator/permohonan/viewAll'); ?>">Semua Permohonan Cuti</a></li>
 				<?php } ?>
 						
                

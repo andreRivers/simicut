@@ -23,11 +23,11 @@ class Permohonan extends CI_Controller
         $this->load->view('templates/footer');
 	}
 
-	public function tolakGo($id_cuti)
+	public function tolakGo()
     {
         $data['title'] = 'Batal  Permohononan Form Cuti';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['batal'] = $this->Permohonan_Model->batalCuti($id_cuti);
+		
 	
 			$jenisCuti = $this->input->post('jenisCuti');	
 
@@ -107,6 +107,56 @@ class Permohonan extends CI_Controller
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Permohonan Berhasil Ditolak</div>');
             redirect('permohonan/listCuti');
 		}
+
+		public function viewMasuk()
+		{
+			$data['title'] = 'List Permohonan Cuti';
+			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+			$data['permohonan'] = $this->Permohonan_Model->listCutiMasuk();
+	
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/topbar', $data);
+			$this->load->view('permohonan/viewMasuk', $data);
+			$this->load->view('templates/footer');
+		}
+
+		public function viewProses()
+		{
+			$data['title'] = 'List Permohonan Cuti Diproses';
+			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+			$data['permohonan'] = $this->Permohonan_Model->listCutiProses();
+	
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/topbar', $data);
+			$this->load->view('permohonan/viewProses', $data);
+			$this->load->view('templates/footer');
+		}
+
+		public function viewDisetujui()
+		{
+			$data['title'] = 'List Permohonan Cuti Diproses';
+			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+			$data['permohonan'] = $this->Permohonan_Model->listCutiDisetujui();
+	
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/topbar', $data);
+			$this->load->view('permohonan/viewDisetujui', $data);
+			$this->load->view('templates/footer');
+		}
+
+		
+		public function viewDitolak()
+		{
+			$data['title'] = 'List Permohonan Cuti Ditolak';
+			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+			$data['permohonan'] = $this->Permohonan_Model->listCutiDitolak();
+	
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/topbar', $data);
+			$this->load->view('permohonan/viewDitolak', $data);
+			$this->load->view('templates/footer');
+		}
+
 
 	
 }
