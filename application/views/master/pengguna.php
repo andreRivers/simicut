@@ -1,5 +1,5 @@
 <section class="content">
-           
+<?= $this->session->flashdata('message'); ?>
 			<div class="box box-primary">
 				<div class="box-header with-border">
 					<h2 class="box-title">Manajemen Pengguna</h2>

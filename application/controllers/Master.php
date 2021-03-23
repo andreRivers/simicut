@@ -87,6 +87,17 @@ $this->session->set_flashdata('message', '<div class="alert alert-success" role=
 redirect('master/pengguna');
 	}
 
+	public function resetPassword($email)
+    {
+	  	$resets="umsu1234";
+		$password_hash = password_hash($resets, PASSWORD_DEFAULT);
+		$this->db->set('password', $password_hash);
+		$this->db->where('email', $email);
+		$this->db->update('user');
+
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil Reset Password = umsu1234</div>');
+		redirect('master/pengguna');
+	}
 
 	
    

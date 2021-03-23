@@ -8,7 +8,7 @@ class Permohonan extends CI_Controller
         parent::__construct();
 		is_logged_in();
 		$this->load->model('Permohonan_Model');
-    }
+    } 
 	
 	public function tolak($id_cuti)
     {
@@ -31,7 +31,7 @@ class Permohonan extends CI_Controller
 	
 			$jenisCuti = $this->input->post('jenisCuti');	
 
-			if ($jenisCuti == "Cuti Umum"); {
+			if ($jenisCuti == "Cuti Umum") {
 			$id_cuti = $this->input->post('id_cuti');
 			$email = $this->input->post('email');
 			$cutiDiambil = $this->input->post('cutiDiambil');
@@ -47,9 +47,7 @@ class Permohonan extends CI_Controller
 			$this->db->where('id_cuti', $id_cuti);
 			$this->db->update('permohonan');
 			
-		} 
-
-		if ($jenisCuti == "Cuti Umroh"); {
+		} elseif ($jenisCuti == "Cuti Umroh") {
 			$id_cuti = $this->input->post('id_cuti');
 			$email = $this->input->post('email');
 			$cutiDiambil = $this->input->post('cutiDiambil');
@@ -65,9 +63,7 @@ class Permohonan extends CI_Controller
 			$this->db->where('id_cuti', $id_cuti);
 			$this->db->update('permohonan');
 			
-		} 
-
-		if ($jenisCuti == "Cuti Hamil"); {
+		} elseif ($jenisCuti == "Cuti Hamil") {
 			$id_cuti = $this->input->post('id_cuti');
 			$email = $this->input->post('email');
 			$cutiDiambil = $this->input->post('cutiDiambil');
